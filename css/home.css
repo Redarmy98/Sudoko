@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playwrite HR", cursive;
+    font-optical-sizing: auto;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #7fbcc6;
+}
+
+.container {
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #c9e5b5
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn:hover {
+    background-color: #e65a50;
+}
