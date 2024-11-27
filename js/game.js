@@ -27,7 +27,7 @@ function condition(cells, cellNo, number) {
     if (cells[i].innerText === String(number)) return false;
 
   return true;
-}
+} 
 
 let btn = document.getElementById("solve-btn");
 function reset() {
@@ -40,6 +40,11 @@ function reset() {
 
 function placeNumbers() {
   let range = Math.floor(Math.random() * 25) + 10;
+  let resetButton = document.getElementById("reset-btn");
+
+  // Disable the reset button
+  resetButton.disabled = true;
+
   for (let i = 0; i < range; i++) {
     setTimeout(() => {
       let number = Math.floor(Math.random() * 9) + 1;
@@ -48,9 +53,15 @@ function placeNumbers() {
         cells[cellNo].innerText = number;
         cells[cellNo].contentEditable = false;
       }
+      
+      // Re-enable the reset button after the last number is placed
+      if (i === range - 1) {
+        resetButton.disabled = false;
+      }
     }, i * 250);
   }
 }
+
 
 function callme() {
   // reset.disabled = 'true';
@@ -58,6 +69,25 @@ function callme() {
   btn.disabled = true; // Disable the button after clicking\
   // reset.disabled = 'false';
 }
+
+cells.forEach((cell) => {
+  cell.addEventListener("input", (e) => {
+    let value = e.target.innerText;
+    if (!/^[1-9]$/.test(value)) {
+      // Show an error message
+      alert("Please enter only a single digit between 1 and 9.");
+      // Reset the cell content
+      e.target.innerText = "";
+    }
+  });
+
+  // Optional: Restrict paste action to prevent invalid inputs
+  cell.addEventListener("paste", (e) => {
+    e.preventDefault();
+    alert("Pasting is not allowed. Please enter a single digit between 1 and 9.");
+  });
+});
+
 
 btn.addEventListener("click", callme);
 document.getElementById('reset-btn').addEventListener('click', reset);
